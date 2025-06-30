@@ -1,26 +1,29 @@
-import 'package:bloc_prac/counter_cubit.dart';
-import 'package:bloc_prac/counter_page.dart';
+import 'package:bloc_prac/grocery/home/bloc/homebloc_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:bloc_prac/grocery/home/ui/home.dart';
+import 'package:bloc_prac/grocery/home/bloc/homebloc_bloc.dart'; // Your GroceryBloc
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    BlocProvider(
+      create: (_) => GroceryBloc()..add(LoadGroceryItems()),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home:  CounterPage(),
+      title: 'Bloc Grocery App',
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: const GroceryListPage(),
     );
   }
 }

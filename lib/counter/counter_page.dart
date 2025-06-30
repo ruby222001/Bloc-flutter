@@ -1,5 +1,5 @@
-import 'package:bloc_prac/counter_cubit.dart';
-import 'package:bloc_prac/counter_view.dart';
+import 'package:bloc_prac/counter/counter_cubit.dart';
+import 'package:bloc_prac/counter/counter_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
