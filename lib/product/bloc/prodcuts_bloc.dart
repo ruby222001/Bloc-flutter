@@ -4,6 +4,12 @@ import 'package:bloc_prac/product/model/product_model.dart';
 import 'package:bloc_prac/service/dio_client.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/*BLoC listens to incoming events, runs your business logic, and emits states.
+
+BLoC is where you centralize logic so your UI doesn’t deal with it directly.
+
+This makes your code cleaner, testable, and easier to maintain. */
+
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final DioClient dioClient;
 
