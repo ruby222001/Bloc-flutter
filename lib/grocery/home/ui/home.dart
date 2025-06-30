@@ -1,3 +1,4 @@
+import 'package:bloc_prac/grocery/cart/bloc/cartbloc_bloc.dart';
 import 'package:bloc_prac/grocery/home/bloc/homebloc_bloc.dart';
 import 'package:bloc_prac/grocery/home/bloc/homebloc_event.dart';
 import 'package:bloc_prac/grocery/home/bloc/homebloc_state.dart';
@@ -10,6 +11,8 @@ class GroceryListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<GroceryBloc>().add(LoadGroceryItems());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Grocery Store'),
@@ -17,9 +20,15 @@ class GroceryListPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const CartPage()),
-              );
+             Navigator.of(context).push(
+  MaterialPageRoute(
+    builder: (_) => BlocProvider(
+      create: (_) => CartblocBloc(), // 🔥 Provide CartBloc here
+      child: const CartPage(),
+    ),
+  ),
+);
+
             },
           ),
         ],
