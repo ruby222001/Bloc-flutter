@@ -1,11 +1,24 @@
-import 'package:bloc_prac/todo/model/todo_model.dart';
-import 'package:equatable/equatable.dart';
+part of 'todo_bloc.dart';
 
-class TodoState extends Equatable {
+sealed class TodoState extends Equatable {
+  const TodoState();
+  
+  @override
+  List<Object> get props => [];
+}
+
+class TodoInitial extends TodoState {}
+
+class TodoLoading extends TodoState {}
+
+class TodoLoaded extends TodoState {
   final List<Todo> todos;
 
-  const TodoState({this.todos = const []});
+  TodoLoaded(this.todos);
+}
 
-  @override
-  List<Object?> get props => [todos];
+class TodoError extends TodoState {
+  final String message;
+
+ TodoError(this.message);
 }
